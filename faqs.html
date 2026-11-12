@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions (FAQs) | Diamond Smile Dental Clinic</title>
+  <meta name="description" content="Find expert answers to common dental questions regarding pain relief, teeth scaling, braces, RCT, implants, milk teeth care, and oral hygiene at Diamond Smile Dental Clinic.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Background -->
+  <div class="ambient-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div class="logo-text">Diamond <span>Smile</span></div>
+      </a>
+
+      <!-- GUEST NAV MENU (Before Login) -->
+      <nav class="nav-menu nav-menu-guest" id="guestNavMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="treatments.html" class="nav-link">Treatments</a>
+        <a href="faqs.html" class="nav-link active">FAQs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- AUTHENTICATED NAV MENU (After Login) -->
+      <nav class="nav-menu nav-menu-user" id="userNavMenu" style="display: none;">
+        <a href="index.html#my-appointments" class="nav-link"><i class="fa-solid fa-calendar-check" style="font-size: 0.85rem;"></i> My Bookings <span class="apt-badge-count red-alert-badge" style="display: none;"></span></a>
+        <a href="index.html#appointment" class="nav-link trigger-appointment"><i class="fa-solid fa-calendar-plus" style="font-size: 0.85rem;"></i> Fix an Appointment</a>
+        <a href="about.html#doctors" class="nav-link"><i class="fa-solid fa-user-doctor" style="font-size: 0.85rem;"></i> Our Team</a>
+        <a href="treatments.html" class="nav-link"><i class="fa-solid fa-kit-medical" style="font-size: 0.85rem;"></i> Treatments</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Fix an Appointment Button (Visible ONLY After Login) -->
+        <button class="btn btn-primary trigger-appointment user-apt-btn" id="userAptBtn" style="display: none;">
+          <i class="fa-solid fa-calendar-plus"></i> Fix an Appointment
+        </button>
+
+        <!-- Dark Mode Toggle Button -->
+        <button class="theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Direct Logout Button (Visible ONLY After Login: Text Only) -->
+        <button class="btn-header-logout logout-btn" id="navHeaderLogoutBtn" style="display: none;">
+          Logout
+        </button>
+
+        <!-- Guest State Auth Button (Before Login) -->
+        <div class="auth-guest-actions" id="navGuestActions">
+          <button class="btn btn-nav-auth btn-primary-auth open-auth-btn" data-auth-mode="signin">
+            Login
+          </button>
+        </div>
+
+        <!-- Authenticated User Profile Dropdown (After Login) -->
+        <div class="auth-user-dropdown" id="navUserDropdown" style="display: none;">
+          <button class="user-profile-badge-btn" id="userProfileBadgeBtn" aria-label="User Profile Menu">
+            <div class="user-avatar-circle" id="navUserAvatar">JD</div>
+            <div class="user-meta-info">
+              <span class="user-nav-name" id="navUserName">Jane Doe</span>
+              <span class="user-nav-role-badge" id="navUserRole">Patient</span>
+            </div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          </button>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <div class="dropdown-header">
+              <strong id="dropdownUserFullName">Jane Doe</strong>
+              <span id="dropdownUserEmail">jane@example.com</span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="index.html#my-appointments" class="dropdown-item">
+              <i class="fa-solid fa-calendar-check"></i> My Appointments
+            </a>
+            <a href="contact.html" class="dropdown-item">
+              <i class="fa-solid fa-file-medical"></i> Medical Records
+            </a>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item logout-btn" id="logoutBtn">
+              <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+            </button>
+          </div>
+        </div>
+
+        <button class="hamburger" aria-label="Open Navigation Drawer">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay"></div>
+  <div class="mobile-drawer">
+    <div>
+      <div class="drawer-header">
+        <div class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+          <div class="logo-text">Diamond <span>Smile</span></div>
+        </div>
+        <button class="close-drawer-btn" aria-label="Close Drawer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- GUEST MOBILE NAV LIST (Before Login) -->
+      <div class="mobile-nav-list mobile-nav-guest" id="mobileNavGuest">
+        <a href="index.html#home" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-info-circle"></i> About Us</a>
+        <a href="treatments.html" class="mobile-nav-link"><i class="fa-solid fa-kit-medical"></i> Treatments</a>
+        <a href="index.html#doctors" class="mobile-nav-link"><i class="fa-solid fa-user-doctor"></i> Our Team</a>
+        <a href="faqs.html" class="mobile-nav-link active"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+        <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+      </div>
+
+      <!-- AUTHENTICATED MOBILE NAV LIST (After Login) -->
+      <div class="mobile-nav-list mobile-nav-user" id="mobileNavUser" style="display: none;">
+        <a href="index.html#my-appointments" class="mobile-nav-link"><i class="fa-solid fa-calendar-check"></i> My Bookings</a>
+        <a href="#appointment" class="mobile-nav-link trigger-appointment"><i class="fa-solid fa-calendar-plus"></i> Fix an Appointment</a>
+        <a href="index.html#doctors" class="mobile-nav-link"><i class="fa-solid fa-user-doctor"></i> Our Team</a>
+        <a href="treatments.html" class="mobile-nav-link"><i class="fa-solid fa-kit-medical"></i> Treatments</a>
+        <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-info-circle"></i> About Clinic</a>
+        <a href="faqs.html" class="mobile-nav-link active"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+        <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem;" class="mobile-drawer-footer">
+      <div class="mobile-drawer-auth" id="mobileDrawerAuth">
+        <!-- Guest Login Button (Before Login) -->
+        <div class="mobile-guest-auth" id="mobileGuestAuth">
+          <button class="btn btn-primary-auth open-auth-btn" data-auth-mode="signin" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 0.75rem 1rem; font-weight: 700;">
+            <i class="fa-solid fa-right-to-bracket"></i> Login / Sign Up
+          </button>
+        </div>
+
+        <!-- Authenticated Mobile User Card & Actions (After Login) -->
+        <div class="mobile-user-auth" id="mobileUserAuth" style="display: none;">
+          <div class="mobile-user-card open-profile-modal-btn">
+            <div class="user-avatar-circle" id="mobileUserAvatar">JD</div>
+            <div style="flex: 1;">
+              <div class="user-nav-name" id="mobileUserName" style="font-weight: 700; color: #ffffff;">Jane Doe</div>
+              <div class="user-nav-role-badge" id="mobileUserRole" style="font-size: 0.75rem; color: var(--primary);">Patient Profile</div>
+            </div>
+            <i class="fa-solid fa-chevron-right" style="color: rgba(255,255,255,0.4); font-size: 0.85rem;"></i>
+          </div>
+          <button class="btn btn-outline-auth logout-btn" style="width: 100%; margin-top: 6px;">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Emergency Call Link inside Mobile Drawer -->
+      <a href="tel:04344222333" class="mobile-drawer-call-btn">
+        <i class="fa-solid fa-phone"></i> Call Emergency: 04344-222333
+      </a>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-offset section" style="padding-bottom: 2rem;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <div class="badge"><i class="fa-solid fa-lightbulb"></i> Knowledge Base</div>
+        <h1 class="section-title">Frequently Asked Questions</h1>
+        <p class="section-subtitle">Got questions? We have clear, expert answers to help you make informed decisions about your oral health.</p>
+      </div>
+
+      <!-- FAQ Search -->
+      <div class="search-box" style="max-width: 600px; margin: 0 auto 3rem auto;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="faqSearch" placeholder="Type a keyword to filter questions (e.g. Scaling, Braces, RCT)...">
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Accordion Section -->
+  <section class="section" style="padding-top: 1rem;">
+    <div class="container">
+      <div class="faqs-container">
+
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can medication completely relieve tooth pain?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Not entirely. While medications may offer short-term relief, long-lasting relief requires identifying and treating the root cause of the pain through professional dental care.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does teeth scaling cause enamel damage, sensitivity, or gaps between teeth?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>No. Scaling safely removes plaque and tartar from teeth and below the gum line. It doesn’t damage enamel or create gaps. Some temporary sensitivity may occur, but it usually subsides as gums heal and reattach to the teeth.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can fluorosis stains be removed through scaling?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Scaling can remove surface (extrinsic) stains but not fluorosis, which is an internal (intrinsic) stain. Fluorosis may require treatments like bleaching, veneers, or crowns for cosmetic improvement.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can painful teeth be treated with fillings?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Not always. If the cavity has reached the pulp, the innermost layer of the tooth, simple filling won’t help. In such cases, root canal treatment or tooth extraction might be necessary. Fillings are effective only when the damage is limited to the outer layers (enamel and dentin).</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is placing a cap or crown necessary after root canal treatment (RCT)?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. A crown is recommended after RCT to protect the treated tooth, which may be weaker due to decay. It prevents fractures and adds durability, especially during chewing.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can milk teeth need root canal treatment (RCT)?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. If a milk tooth has a deep cavity and is likely to remain in the mouth for some time, an RCT can preserve it and prevent infection or early loss.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 7 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How can I maintain good oral hygiene?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Brush your teeth twice daily with proper technique, rinse after meals, floss regularly, and schedule routine check-ups with your dentist to maintain healthy teeth and gums.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 8 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the best age to get braces?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Braces are most effective between ages 12 and 14, when the jaw and teeth are still developing. However, some cases may benefit from earlier intervention depending on the condition.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 9 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do all wisdom teeth need to be removed?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>No. Wisdom teeth only require removal if they are impacted, infected, or causing pain due to crowding or damage to adjacent teeth.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 10 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is it important to replace missing teeth after extraction?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Replacing extracted teeth helps maintain proper bite alignment and prevents adjacent teeth from shifting, which can affect chewing and overall oral function.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 11 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What are the benefits of dental implants?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Dental implants restore both the appearance and functionality of missing teeth. They provide a stable, natural-looking solution that can improve confidence and overall quality of life.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 12 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which type of toothbrush and toothpaste should I use?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Use a soft or medium-bristled toothbrush with a small head for better reach. Choose a non-abrasive fluoride toothpaste and replace your toothbrush every three months for optimal hygiene.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 13 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What causes tooth sensitivity?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Tooth sensitivity can result from enamel wear (due to attrition or abrasion), tooth decay, exposed tooth roots, or hairline cracks in the teeth.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 14 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How often should I see a dentist?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Visiting your dentist every six months is recommended for routine check-ups, professional cleaning, and preventive care to maintain good oral health.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Appointment Modal -->
+  <div class="modal-overlay" id="appointmentModal">
+    <div class="modal-card">
+      <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div class="badge"><i class="fa-solid fa-calendar-check"></i> Diamond Smile Dental Clinic</div>
+        <h2 style="font-size: 1.8rem;">Fix an Appointment</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Select your preferred date & time. We will get in touch to confirm!</p>
+      </div>
+
+      <form id="appointmentForm">
+        <div class="form-group">
+          <label for="aptName">Full Name *</label>
+          <input type="text" id="aptName" class="form-control" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="aptPhone">Phone Number *</label>
+          <input type="tel" id="aptPhone" class="form-control" placeholder="Enter your 10-digit mobile number" required>
+        </div>
+
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label for="aptDate">Preferred Date *</label>
+            <input type="date" id="aptDate" class="form-control" required>
+          </div>
+          <div>
+            <label for="aptDoctor">Doctor Preference</label>
+            <select id="aptDoctor" class="form-control">
+              <option value="Dr. Anupriya">Dr. Anupriya (Founder)</option>
+              <option value="Dr. Ananya Iyer">Dr. Ananya Iyer</option>
+              <option value="Dr. Meera Subramanian">Dr. Meera Subramanian</option>
+              <option value="Dr. Arvind Kumar">Dr. Arvind Kumar</option>
+              <option value="Dr. Sneha N">Dr. Sneha N</option>
+              <option value="Dr. Srinivas Rohit">Dr. Srinivas Rohit</option>
+              <option value="Dr. Balu">Dr. Balu (Laser Specialist)</option>
+              <option value="Dr. Vikram Raj">Dr. Vikram Raj Kishore</option>
+              <option value="Dr. Ajay Jumar">Dr. Ajay Jumar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="aptService">Service / Treatment Required</label>
+          <select id="aptService" class="form-control">
+            <option value="General Consultation">General Consultation</option>
+            <option value="Teeth Cleaning">Teeth Cleaning & Scaling</option>
+            <option value="Orthodontic Braces">Braces & Aligners</option>
+            <option value="Tooth Extraction">Tooth Extraction</option>
+            <option value="Dental Implants">Dental Implants</option>
+            <option value="Laser Care">Laser Dentistry</option>
+            <option value="Pediatric Care">Pediatric Care</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Appointment Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+            <div class="logo-text">Diamond <span>Smile</span></div>
+          </a>
+          <p>Diamond Smile Dental Clinic is the region's premier dental clinic, specializing in warm, modern, compassionate care for women, children, and families.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="treatments.html">Treatments</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Key Treatments</h4>
+          <div class="footer-links">
+            <a href="treatments.html">Teeth Cleaning & Scaling</a>
+            <a href="treatments.html">Orthodontic Braces & Aligners</a>
+            <a href="treatments.html">Dental Implants</a>
+            <a href="treatments.html">Tooth Extraction</a>
+            <a href="treatments.html">Laser Dentistry</a>
+            <a href="treatments.html">Pediatric Dentistry</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact Details</h4>
+          <div class="footer-links" style="gap: 0.75rem;">
+            <p><i class="fa-solid fa-location-dot" style="color: var(--primary); margin-right: 8px;"></i> 42 Diamond Heights Blvd, Anthivadi, Hosur 635109</p>
+            <p><i class="fa-solid fa-phone" style="color: var(--primary); margin-right: 8px;"></i> +91 98450 82190 / +91 94480 34820</p>
+            <p><i class="fa-solid fa-mobile-screen" style="color: var(--primary); margin-right: 8px;"></i> Alt / Emergency: +91 98450 82199</p>
+            <p><i class="fa-solid fa-envelope" style="color: var(--primary); margin-right: 8px;"></i> info@diamondsmileclinic.in</p>
+            <p><i class="fa-solid fa-clock" style="color: var(--primary); margin-right: 8px;"></i> Mon - Sat: 8:30 AM - 7:30 PM (Sun: 9AM - 1PM)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Diamond Smile Dental Clinic. All Rights Reserved. Designed for ShadowFox Client Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth Modal (Sign In / Sign Up Split Screen) -->
+  <div class="modal-overlay" id="authModal">
+    <div class="auth-modal-card">
+      <button class="close-modal-btn close-auth-modal-btn" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="auth-card-body">
+        <!-- Form Side -->
+        <div class="auth-form-side">
+          <!-- Auth Mode Tabs (Sign In / Sign Up) -->
+          <div class="auth-mode-switch">
+            <button type="button" class="auth-mode-btn active" id="tabBtnSignIn" data-tab="signin">Sign In</button>
+            <button type="button" class="auth-mode-btn" id="tabBtnSignUp" data-tab="signup">Sign Up</button>
+          </div>
+
+          <!-- SIGN IN FORM -->
+          <form id="signInForm" class="auth-form-content active">
+            <div class="form-group">
+              <label for="signInEmail">Email or Phone</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="text" id="signInEmail" class="form-control with-icon" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signInPassword">Password</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="signInPassword" class="form-control with-icon with-eye" placeholder="Enter your password" required>
+                <button type="button" class="toggle-password-btn" aria-label="Toggle Password Visibility">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="checkbox-container">
+                <input type="checkbox" id="rememberMe" checked>
+                <span class="checkmark"></span>
+                Remember me
+              </label>
+              <a href="#" class="forgot-link" id="forgotPasswordBtn">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit-btn" id="signInSubmitBtn">
+              Login
+            </button>
+
+            <!-- New User Guidance Card -->
+            <div class="new-user-guidance-card">
+              <div class="guidance-body">
+                <i class="fa-solid fa-sparkles guidance-star-icon"></i>
+                <div>
+                  <strong>First time visiting Diamond Smile?</strong>
+                  <p>New patients can easily create a free account.</p>
+                </div>
+              </div>
+              <button type="button" class="btn-guidance-signup" id="guidanceSignUpBtn">
+                Go to Sign Up <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Quick Demo Logins -->
+            <div class="demo-auth-box">
+              <div class="demo-box-title"><i class="fa-solid fa-lightbulb"></i> Quick Patient Demo:</div>
+              <div class="demo-btn-group">
+                <button type="button" class="demo-chip-btn" id="fillDemoPatient" style="width: 100%;">
+                  <i class="fa-solid fa-user"></i> Auto-fill Patient Demo Login
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-footer-switch">
+              No account yet? <a href="#" id="switchToSignUpLink">Sign Up</a>
+            </div>
+          </form>
+
+          <!-- SIGN UP FORM -->
+          <form id="signUpForm" class="auth-form-content" style="display: none;">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="signUpName" id="signUpNameLabel">Full Name</label>
+                <div class="input-icon-wrapper">
+                  <i class="fa-solid fa-user input-icon"></i>
+                  <input type="text" id="signUpName" class="form-control with-icon" placeholder="Jane Doe" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signUpPhone">Phone Number</label>
+                <div class="input-icon-wrapper">
+                  <i class="fa-solid fa-phone input-icon"></i>
+                  <input type="tel" id="signUpPhone" class="form-control with-icon" placeholder="+91 98765 43210" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signUpEmail">Email Address</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="signUpEmail" class="form-control with-icon" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signUpPassword">Password</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="signUpPassword" class="form-control with-icon with-eye" placeholder="Create a strong password" required>
+                <button type="button" class="toggle-password-btn" aria-label="Toggle Password Visibility">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success-auth auth-submit-btn" id="signUpSubmitBtn">
+              Create Patient Account
+            </button>
+
+            <div class="auth-footer-switch">
+              Already have an account? <a href="#" id="switchToSignInLink">Sign In</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Visual Side -->
+        <div class="auth-visual-side">
+          <img src="./assets/images/auth_banner.jpg" id="authVisualImg" class="auth-visual-img" alt="Diamond Smile Dental Clinic Showcase">
+          <div class="auth-visual-overlay">
+            <div class="auth-visual-header">
+              <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+                <div class="logo-text">Diamond <span>Smile</span></div>
+              </div>
+            </div>
+
+            <div class="auth-visual-content">
+              <div class="auth-network-pill" id="authNetworkPill">DIAMOND SMILE HEALTHCARE NETWORK</div>
+              <h2 id="authVisualTitle">Painless Dental Care. Lifelong Healthy Smiles.</h2>
+              <p id="authVisualSubtitle">Join Diamond Smile's premier dental clinic. Access digital consultation history, doctor scheduling & treatment records instantly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

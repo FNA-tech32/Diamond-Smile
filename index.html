@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Smile Dental Clinic - Specialized Dental Care for Women, Children & Families</title>
+  <meta name="description" content="Diamond Smile Dental Clinic provides compassionate, expert dental care specialized for women and children. Founded by Dr. Anupriya with 20+ years of experience.">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Connected Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Background -->
+  <div class="ambient-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Header / Floating Navbar -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div class="logo-text">Diamond <span>Smile</span></div>
+      </a>
+
+      <!-- GUEST NAV MENU (Before Login: Home, About Us, Treatments, FAQs, Contact) -->
+      <nav class="nav-menu nav-menu-guest" id="guestNavMenu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#treatments" class="nav-link">Treatments</a>
+        <a href="#faqs" class="nav-link">FAQs</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- AUTHENTICATED NAV MENU (After Login: My Bookings, Fix an Appointment, Our Team, Treatments) -->
+      <nav class="nav-menu nav-menu-user" id="userNavMenu" style="display: none;">
+        <a href="#my-appointments" class="nav-link active"><i class="fa-solid fa-calendar-check" style="font-size: 0.85rem;"></i> My Bookings <span class="apt-badge-count red-alert-badge" style="display: none;"></span></a>
+        <a href="#appointment" class="nav-link trigger-appointment"><i class="fa-solid fa-calendar-plus" style="font-size: 0.85rem;"></i> Fix an Appointment</a>
+        <a href="#doctors" class="nav-link"><i class="fa-solid fa-user-doctor" style="font-size: 0.85rem;"></i> Our Team</a>
+        <a href="#treatments" class="nav-link"><i class="fa-solid fa-kit-medical" style="font-size: 0.85rem;"></i> Treatments</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Dark Mode Toggle Button -->
+        <button class="theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Direct Logout Button (Visible ONLY After Login: Text Only) -->
+        <button class="btn-header-logout logout-btn" id="navHeaderLogoutBtn" style="display: none;">
+          Logout
+        </button>
+
+        <!-- Guest State Auth Button (Before Login: Text Only Login Button) -->
+        <div class="auth-guest-actions" id="navGuestActions">
+          <button class="btn btn-nav-auth btn-primary-auth open-auth-btn" data-auth-mode="signin">
+            Login
+          </button>
+        </div>
+
+        <!-- Authenticated User Profile Dropdown (After Login) -->
+        <div class="auth-user-dropdown" id="navUserDropdown" style="display: none;">
+          <button class="user-profile-badge-btn" id="userProfileBadgeBtn" aria-label="User Profile Menu">
+            <div class="user-avatar-circle" id="navUserAvatar">JD</div>
+            <div class="user-meta-info">
+              <span class="user-nav-name" id="navUserName">Jane Doe</span>
+              <span class="user-nav-role-badge" id="navUserRole">Patient</span>
+            </div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          </button>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <div class="dropdown-header">
+              <strong id="dropdownUserFullName">Jane Doe</strong>
+              <span id="dropdownUserEmail">jane@example.com</span>
+            </div>
+            <button type="button" class="dropdown-item open-profile-modal-btn">
+              <i class="fa-solid fa-id-card"></i> View Patient Profile
+            </button>
+            <a href="#my-appointments" class="dropdown-item">
+              <i class="fa-solid fa-calendar-check"></i> My Appointments
+            </a>
+            <button type="button" class="dropdown-item open-profile-modal-btn" data-target-tab="medical">
+              <i class="fa-solid fa-file-medical"></i> Medical Records & History
+            </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item logout-btn" id="logoutBtn">
+              <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+            </button>
+          </div>
+        </div>
+
+        <button class="hamburger" aria-label="Open Navigation Drawer">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-overlay"></div>
+  <div class="mobile-drawer">
+    <div>
+      <div class="drawer-header">
+        <div class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+          <div class="logo-text">Diamond <span>Smile</span></div>
+        </div>
+        <button class="close-drawer-btn" aria-label="Close Drawer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- GUEST MOBILE NAV LIST (Before Login) -->
+      <div class="mobile-nav-list mobile-nav-guest" id="mobileNavGuest">
+        <a href="#home" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#about" class="mobile-nav-link"><i class="fa-solid fa-info-circle"></i> About Us</a>
+        <a href="#treatments" class="mobile-nav-link"><i class="fa-solid fa-kit-medical"></i> Treatments</a>
+        <a href="#doctors" class="mobile-nav-link"><i class="fa-solid fa-user-doctor"></i> Our Team</a>
+        <a href="#faqs" class="mobile-nav-link"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+        <a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+      </div>
+
+      <!-- AUTHENTICATED MOBILE NAV LIST (After Login) -->
+      <div class="mobile-nav-list mobile-nav-user" id="mobileNavUser" style="display: none;">
+        <a href="#my-appointments" class="mobile-nav-link active"><i class="fa-solid fa-calendar-check"></i> My Bookings <span class="apt-badge-count red-alert-badge" style="display: none;"></span></a>
+        <a href="#appointment" class="mobile-nav-link trigger-appointment"><i class="fa-solid fa-calendar-plus"></i> Fix an Appointment</a>
+        <a href="#doctors" class="mobile-nav-link"><i class="fa-solid fa-user-doctor"></i> Our Team</a>
+        <a href="#treatments" class="mobile-nav-link"><i class="fa-solid fa-kit-medical"></i> Treatments</a>
+        <a href="#about" class="mobile-nav-link"><i class="fa-solid fa-info-circle"></i> About Clinic</a>
+        <a href="#faqs" class="mobile-nav-link"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+        <a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem;" class="mobile-drawer-footer">
+      <div class="mobile-drawer-auth" id="mobileDrawerAuth">
+        <!-- Guest Login Button (Before Login) -->
+        <div class="mobile-guest-auth" id="mobileGuestAuth">
+          <button class="btn btn-primary-auth open-auth-btn" data-auth-mode="signin" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 0.75rem 1rem; font-weight: 700;">
+            <i class="fa-solid fa-right-to-bracket"></i> Login / Sign Up
+          </button>
+        </div>
+
+        <!-- Authenticated Mobile User Card & Actions (After Login) -->
+        <div class="mobile-user-auth" id="mobileUserAuth" style="display: none;">
+          <div class="mobile-user-card open-profile-modal-btn">
+            <div class="user-avatar-circle" id="mobileUserAvatar">JD</div>
+            <div style="flex: 1;">
+              <div class="user-nav-name" id="mobileUserName" style="font-weight: 700; color: #ffffff;">Jane Doe</div>
+              <div class="user-nav-role-badge" id="mobileUserRole" style="font-size: 0.75rem; color: var(--primary);">Patient Profile</div>
+            </div>
+            <i class="fa-solid fa-chevron-right" style="color: rgba(255,255,255,0.4); font-size: 0.85rem;"></i>
+          </div>
+          <button class="btn btn-outline-auth logout-btn" style="width: 100%; margin-top: 6px;">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Emergency Call Link inside Mobile Drawer -->
+      <a href="tel:04344222333" class="mobile-drawer-call-btn">
+        <i class="fa-solid fa-phone"></i> Call Emergency: 04344-222333
+      </a>
+    </div>
+  </div>
+
+  <!-- SECTION 1: HERO & HOME -->
+  <section id="home" class="hero">
+    <div class="hero-particle particle-1"></div>
+    <div class="hero-particle particle-2"></div>
+    <div class="hero-particle particle-3"></div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title-animated eye-catching-title">
+            Specialized Dental Care for <span class="gradient-text-animated ultra-bold-glow">Women, Children & Families</span>
+          </h1>
+          <p class="hero-subtext">
+            Experience compassionate, expert-led dental services tailored to your needs, all in a modern and welcoming environment.
+          </p>
+
+          <div class="hero-ctas">
+            <button class="btn btn-primary btn-glow-primary trigger-appointment">
+              <i class="fa-solid fa-calendar-plus"></i> Fix an Appointment
+            </button>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa-solid fa-phone-volume"></i> Emergency Support
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3 class="counter-number" data-target="20" data-suffix="+">0+</h3>
+              <p>Years of Clinical Excellence</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="counter-number" data-target="15000" data-suffix="+" data-format="comma">0+</h3>
+              <p>Happy Patients Treated</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="counter-number" data-target="9">0</h3>
+              <p>Specialist Doctors</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper floating-showcase">
+          <div class="hero-ring-1"></div>
+          <div class="hero-ring-2"></div>
+          
+          <div class="hero-img-card">
+            <img src="./assets/images/hero.jpg" alt="Diamond Smile Dental Clinic Doctor caring for patient">
+            
+            <div class="hero-card-overlay-bar">
+              <div class="status-indicator">
+                <span class="green-dot"></span> <strong>Appointments Open Today</strong>
+              </div>
+              <div class="rating-badge">
+                <i class="fa-solid fa-star"></i> 4.9/5 Rating
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome Message / Assurance Banner -->
+  <section class="container" style="margin-bottom: 4rem;">
+    <div class="assurance-banner reveal-on-scroll">
+      <div class="assurance-content">
+        <div class="assurance-text">
+          <div class="badge" style="background: rgba(255,255,255,0.2); color: white; border-color: rgba(255,255,255,0.4);">
+            <i class="fa-solid fa-hand-holding-hand"></i> Patient Reassurance
+          </div>
+          <h2>You are always in safe hands. We are ready to help, anytime.</h2>
+          <p>Whether it's a routine check-up, pediatric dental care, or orthodontic alignment, our dedicated team ensures a comforting, stress-free experience from consultation to complete recovery.</p>
+        </div>
+        <button class="btn btn-secondary trigger-appointment" style="white-space: nowrap;">
+          <i class="fa-solid fa-calendar-check"></i> Book Consultation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: MY APPOINTMENTS DASHBOARD -->
+  <section id="my-appointments" class="section" style="background: var(--bg-card-hover);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-calendar-check"></i> Patient Dashboard</div>
+        <h2 class="section-title">My Scheduled Appointments</h2>
+        <p class="section-subtitle">Track your upcoming clinic consultations, doctor preferences, and booking statuses in real time.</p>
+      </div>
+
+      <!-- BEFORE LOGIN (GUEST STATE) -->
+      <div class="guest-lock-card" id="guestAppointmentsState" style="display: block;">
+        <div class="guest-lock-icon"><i class="fa-solid fa-user-lock"></i></div>
+        <h3>Patient Portal Login</h3>
+        <p>Access your scheduled dental consultations, doctor care plans, and medical history. Existing users log in below. <strong>First time visiting?</strong> Click <strong>Login</strong> and select <strong>Sign Up</strong> to create your account!</p>
+        <div class="guest-lock-actions">
+          <button class="btn btn-primary btn-glow-primary open-auth-btn" data-auth-mode="signin" style="padding: 0.85rem 2.2rem; font-size: 1.05rem;">
+            <i class="fa-solid fa-right-to-bracket"></i> Login to Patient Portal
+          </button>
+        </div>
+        <div style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--text-muted);">
+          New Patient? <a href="#" class="open-auth-btn" data-auth-mode="signup" style="color: var(--primary); font-weight: 700; text-decoration: underline;">Click here to Sign Up & Register</a>
+        </div>
+      </div>
+
+      <!-- AFTER LOGIN (AUTHENTICATED STATE) -->
+      <div class="user-dashboard-view" id="userAppointmentsState" style="display: none;">
+        <div class="patient-profile-bar">
+          <div class="patient-bar-info">
+            <div class="user-avatar-circle lg" id="dashboardAvatar">JD</div>
+            <div>
+              <h3 class="patient-welcome-name" id="dashboardWelcomeName">Welcome back, Jane Doe!</h3>
+              <p class="patient-meta-sub" id="dashboardMetaSub"><i class="fa-solid fa-envelope"></i> jane@example.com • <i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+            </div>
+          </div>
+          <div class="patient-bar-actions">
+            <button class="btn btn-primary trigger-appointment">
+              <i class="fa-solid fa-calendar-plus"></i> New Appointment
+            </button>
+          </div>
+        </div>
+
+        <div class="appointments-grid" id="myAppointmentsContainer">
+          <!-- Rendered dynamically by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Diamond Smile Dental Clinic? -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-star"></i> Our Philosophy</div>
+        <h2 class="section-title">Why Choose Diamond Smile Dental Clinic?</h2>
+        <p class="section-subtitle">Discover what makes our clinic the preferred choice for families across the region.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-1">
+          <div class="card-img-wrapper">
+            <img src="./assets/images/pediatric_dentistry.jpg" alt="Specialized Care for Women and Children">
+            <span class="card-tag-badge accent-teal"><i class="fa-solid fa-person-breastfeeding"></i> Women & Kids Focus</span>
+          </div>
+          <div class="card-content-body">
+            <div class="feature-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <h3>Specialized Gentle Care</h3>
+            <p>Tailored dental protocols specially designed for women, expectant mothers, and young children in a stress-free setting.</p>
+            <ul class="card-mini-specs">
+              <li><i class="fa-solid fa-circle-check"></i> Gentle Pediatric Environment</li>
+              <li><i class="fa-solid fa-circle-check"></i> Painless Anesthesia Tech</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-2">
+          <div class="card-img-wrapper">
+            <img src="./assets/images/laser_dentistry.jpg" alt="Advanced Painless Laser Dentistry">
+            <span class="card-tag-badge accent-pink"><i class="fa-solid fa-bolt"></i> 100% Painless LASER</span>
+          </div>
+          <div class="card-content-body">
+            <div class="feature-icon"><i class="fa-solid fa-microscope"></i></div>
+            <h3>Painless Laser Technology</h3>
+            <p>Advanced laser-guided equipment for bloodless gum surgeries, teeth whitening, and precise root canal treatments.</p>
+            <ul class="card-mini-specs">
+              <li><i class="fa-solid fa-circle-check"></i> No Bleeding & Fast Recovery</li>
+              <li><i class="fa-solid fa-circle-check"></i> Quiet Noise-Free Comfort</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-3">
+          <div class="card-img-wrapper">
+            <img src="./assets/images/facilities.jpg" alt="Modern Sterile Dental Facility Hosur">
+            <span class="card-tag-badge accent-purple"><i class="fa-solid fa-shield"></i> Hospital Grade Hygiene</span>
+          </div>
+          <div class="card-content-body">
+            <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>Ultra-Sterile Facility</h3>
+            <p>100% sterile operating environments with class-B autoclaves, digital X-rays, and ergonomic patient suites.</p>
+            <ul class="card-mini-specs">
+              <li><i class="fa-solid fa-circle-check"></i> Class-B Autoclave Sterilization</li>
+              <li><i class="fa-solid fa-circle-check"></i> Digital Low-Radiation Imaging</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-4">
+          <div class="card-img-wrapper">
+            <img src="./assets/images/dr_anupriya.jpg" alt="Experienced Specialist Dentists Hosur">
+            <span class="card-tag-badge accent-amber"><i class="fa-solid fa-award"></i> Senior Dental Surgeons</span>
+          </div>
+          <div class="card-content-body">
+            <div class="feature-icon"><i class="fa-solid fa-user-doctor"></i></div>
+            <h3>20+ Yrs Clinical Expertise</h3>
+            <p>Led by Dr. Anupriya alongside 9 specialized dental surgeons with over two decades of trusted community care.</p>
+            <ul class="card-mini-specs">
+              <li><i class="fa-solid fa-circle-check"></i> 15,000+ Happy Patients</li>
+              <li><i class="fa-solid fa-circle-check"></i> 10+ Yrs Govt Consultant</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: ABOUT US & DOCTOR TEAM -->
+  <section id="about" class="section" style="background: var(--bg-card-hover);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-heart"></i> Excellence in Dentistry</div>
+        <h2 class="section-title">About Diamond Smile Dental Clinic</h2>
+        <p class="section-subtitle">Discover our story, meet Dr. Anupriya, and explore our dedication to world-class oral healthcare.</p>
+      </div>
+
+      <div class="about-hero">
+        <div class="doctor-img-frame reveal-on-scroll">
+          <img src="./assets/images/dr_anupriya.jpg" alt="Dr. Anupriya Founder Diamond Smile Dental Clinic">
+          <div class="experience-badge">
+            <h3>20+ Years</h3>
+            <p>Clinical Expertise</p>
+          </div>
+        </div>
+
+        <div class="about-bio reveal-on-scroll delay-1">
+          <div class="badge"><i class="fa-solid fa-award"></i> Founder & Lead Dentist</div>
+          <h2>Get to Know Dr. Anupriya</h2>
+          <h4>Your Trusted Partner in Dental Care</h4>
+
+          <p>
+            Bringing over 20 years of expertise, Dr. Anupriya stands as a leading figure in modern dentistry at Hosur. She began her professional journey after graduating in 2000. Her passion for delivering exceptional dental care was further nurtured during six impactful years at Mathura Clinic, where she refined her clinical skills and deepened her commitment to patient wellbeing.
+          </p>
+          <p>
+            In 2004, Dr. Anupriya established Diamond Smile Dental Clinic in Hosur with a clear vision to make high-quality dental care accessible to all. Her dedication extends beyond private practice, reflected in her long-standing service with the Primary Health Center at Chandara Hospital, where she has been a trusted dental consultant for over a decade.
+          </p>
+          <p>
+            At Diamond Smile Dental Clinic, we believe that a healthy smile is a gateway to confidence and wellbeing. Our clinic blends advanced dental technology with a warm, patient-friendly environment to ensure every visit is comfortable and stress-free. From routine check-ups to specialized treatments, we prioritize personalized care tailored to your unique dental needs.
+          </p>
+          <p style="font-weight: 600; color: var(--primary);">
+            Whether you're looking for preventive care, cosmetic enhancements, or restorative solutions, Dr. Anupriya and her team are committed to delivering excellence at every step. Because here, your smile isn’t just treated — it’s celebrated.
+          </p>
+        </div>
+      </div>
+
+      <!-- Vision & Mission -->
+      <div class="vision-mission-grid" style="margin-top: 4rem;">
+        <div class="glass-card feature-card-rich vm-card reveal-on-scroll delay-1">
+          <div class="card-img-wrapper" style="height: 200px;">
+            <img src="./assets/images/mission.jpg" alt="Diamond Smile Dental Clinic Mission">
+            <span class="card-tag-badge accent-teal"><i class="fa-solid fa-bullseye"></i> Our Purpose</span>
+          </div>
+          <div class="card-content-body">
+            <div class="vm-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h3>Our Mission</h3>
+            <p>
+              At Diamond Smile Dental Clinic, our mission is to redefine oral healthcare by delivering personalized, compassionate, and advanced dental services. We are committed to creating a welcoming environment where patients feel comfortable and confident in taking charge of their dental health. By integrating state-of-the-art technology with patient-centric care, we ensure that every treatment enhances not only your smile but also your overall well-being.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich vm-card reveal-on-scroll delay-2">
+          <div class="card-img-wrapper" style="height: 200px;">
+            <img src="./assets/images/vision.jpg" alt="Diamond Smile Dental Clinic Vision">
+            <span class="card-tag-badge accent-purple"><i class="fa-solid fa-eye"></i> Future Goal</span>
+          </div>
+          <div class="card-content-body">
+            <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
+            <h3>Our Vision</h3>
+            <p>
+              Our vision is to be a leading force in modern dentistry, known for setting new standards in patient care, innovation, and community engagement. At Diamond Smile Dental Clinic, we believe that building trust, encouraging preventive practices, and fostering a culture of excellence are key to making a lasting impact.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctors Grid Section -->
+      <div id="doctors" style="margin-top: 5rem; scroll-margin-top: 100px;">
+        <div class="section-header reveal-on-scroll">
+          <div class="badge"><i class="fa-solid fa-user-group"></i> Medical Experts</div>
+          <h2 class="section-title">Our Team of Doctors</h2>
+          <p class="section-subtitle">Meet our multidisciplinary team of 9 experienced dentists and specialist surgeons.</p>
+        </div>
+
+        <div class="doctors-grid">
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-1">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_anupriya.jpg" alt="Dr. Anupriya Founder">
+              <span class="card-tag-badge accent-teal"><i class="fa-solid fa-award"></i> 20+ Yrs Exp</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Anupriya</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Founder & Chief Dental Surgeon</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Senior Surgeon • BDS (2000)</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-2">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_ananya.jpg" alt="Dr. Ananya Iyer">
+              <span class="card-tag-badge accent-blue"><i class="fa-solid fa-teeth"></i> Specialist</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Ananya Iyer</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Prosthodontist</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Crowns, Bridges & Dentures</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-3">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_meera.jpg" alt="Dr. Meera Subramanian">
+              <span class="card-tag-badge accent-pink"><i class="fa-solid fa-syringe"></i> Specialist</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Meera Subramanian</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Endodontist</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Root Canal Specialist</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-1">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_arvind.jpg" alt="Dr. Arvind Kumar">
+              <span class="card-tag-badge accent-amber"><i class="fa-solid fa-stethoscope"></i> Surgeon</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Arvind Kumar</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Dental Surgeon</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">General & Preventive Care</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-2">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_pooja.jpg" alt="Dr. Sneha N">
+              <span class="card-tag-badge accent-purple"><i class="fa-solid fa-grip-lines"></i> Ortho Specialist</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Sneha N</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Orthodontist</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Braces & Aligners Expert</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-3">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_rajesh.jpg" alt="Dr. Srinivas Rohit Ramanujam">
+              <span class="card-tag-badge accent-teal"><i class="fa-solid fa-teeth-open"></i> Implantologist</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Srinivas Rohit</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Implantologist</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Titanium Dental Implants</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-1">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_siddharth.jpg" alt="Dr. Balu">
+              <span class="card-tag-badge accent-pink"><i class="fa-solid fa-bolt"></i> Laser Expert</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Balu</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Laser Surgeon</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Painless LASER Surgery</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-2">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_divya.jpg" alt="Dr. Vikram Raj Kishore">
+              <span class="card-tag-badge accent-blue"><i class="fa-solid fa-eye-slash"></i> Aligners Partner</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Vikram Raj</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Aligners Partner</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">3D Digital Clear Aligners</p>
+            </div>
+          </div>
+
+          <div class="glass-card feature-card-rich doctor-card-rich reveal-on-scroll delay-3">
+            <div class="card-img-wrapper" style="height: 220px;">
+              <img src="./assets/images/doctor_kavitha.jpg" alt="Dr. Ajay Jumar">
+              <span class="card-tag-badge accent-amber"><i class="fa-solid fa-user-doctor"></i> Maxillofacial</span>
+            </div>
+            <div class="card-content-body" style="text-align: center; align-items: center;">
+              <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Dr. Ajay Jumar</h4>
+              <span style="color: var(--primary); font-weight: 700; font-size: 0.875rem;">Oral & Maxillofacial Surgeon</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Complex Surgery & Trauma</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: FULL TREATMENTS & SERVICES -->
+  <section id="treatments" class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-notes-medical"></i> Specialized Services</div>
+        <h2 class="section-title">Our Complete Dental Treatments</h2>
+        <p class="section-subtitle">Filter or search through our comprehensive range of 15 dental treatments.</p>
+      </div>
+
+      <!-- Filter Bar & Search -->
+      <div class="filter-bar reveal-on-scroll delay-1">
+        <div class="category-tabs">
+          <button class="tab-btn active" data-category="all">All Treatments</button>
+          <button class="tab-btn" data-category="gum-laser">Gum & Laser Care</button>
+          <button class="tab-btn" data-category="restorative">Restorative & Dentures</button>
+          <button class="tab-btn" data-category="cosmetic">Cosmetic & Whitening</button>
+          <button class="tab-btn" data-category="orthodontics">Orthodontics & Aligners</button>
+          <button class="tab-btn" data-category="surgical">Surgical & Implants</button>
+          <button class="tab-btn" data-category="pediatric">Pediatric Care</button>
+        </div>
+
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="treatmentSearch" placeholder="Search treatments (e.g. Braces, Implants)...">
+        </div>
+      </div>
+
+      <!-- 15 Treatments Grid -->
+      <div class="treatments-grid" id="treatmentsContainer">
+        
+        <!-- 1. Teeth Cleaning & Scaling -->
+        <div class="treatment-card-wrapper" data-category="gum-laser">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/teeth_cleaning.jpg" alt="Teeth Cleaning & Scaling">
+              <span class="card-tag-badge accent-teal"><i class="fa-solid fa-wand-magic-sparkles"></i> Gum & Laser Care</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>Teeth Cleaning & Scaling</h3>
+              </div>
+              <p>At Diamond Smile Dental Clinic, we offer advanced, non-surgical gum care using modern LASER technology for precise plaque removal, tartar scaling, and deep root planing.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> LASER Guided Scaling</li>
+                <li><i class="fa-solid fa-circle-check"></i> Quick 35 Min Session</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 1,200 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Tooth Filling -->
+        <div class="treatment-card-wrapper" data-category="restorative">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/tooth_filling.jpg" alt="Tooth Filling">
+              <span class="card-tag-badge accent-blue"><i class="fa-solid fa-fill-drip"></i> Restorative Care</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-fill-drip"></i></div>
+                <h3>Tooth Filling</h3>
+              </div>
+              <p>We restore decayed or chipped teeth using tooth-colored composite resins that seamlessly match your natural shade and protect against future cavities.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Natural Composite Resin</li>
+                <li><i class="fa-solid fa-circle-check"></i> Single Visit Treatment</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 800 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Tooth Extraction -->
+        <div class="treatment-card-wrapper" data-category="surgical">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/tooth_extraction.jpg" alt="Tooth Extraction">
+              <span class="card-tag-badge accent-pink"><i class="fa-solid fa-tooth"></i> Surgical Care</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-tooth"></i></div>
+                <h3>Tooth Extraction</h3>
+              </div>
+              <p>When removal is essential, our surgical specialists perform extractions using local anesthesia techniques designed for maximum patient comfort.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Gentle Painless Protocol</li>
+                <li><i class="fa-solid fa-circle-check"></i> Fast Recovery Guidance</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 1,500 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Artificial Complete Denture -->
+        <div class="treatment-card-wrapper" data-category="restorative">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/complete_denture.jpg" alt="Artificial Complete Denture">
+              <span class="card-tag-badge accent-amber"><i class="fa-solid fa-teeth"></i> Full Arch Dentures</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-teeth"></i></div>
+                <h3>Artificial Complete Denture</h3>
+              </div>
+              <p>Custom-crafted full dentures fabricated with lightweight biocompatible acrylics to restore chewing ability, facial harmony, and confident smiles.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Custom Ergonomic Fit</li>
+                <li><i class="fa-solid fa-circle-check"></i> Natural Aesthetic Shade</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 15,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Dental Implants -->
+        <div class="treatment-card-wrapper" data-category="surgical">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/dental_implants.jpg" alt="Dental Implants">
+              <span class="card-tag-badge accent-purple"><i class="fa-solid fa-teeth-open"></i> Permanent Implants</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-teeth-open"></i></div>
+                <h3>Dental Implants</h3>
+              </div>
+              <p>Titanium root implants inserted into the jawbone provide a permanent, unbreakable foundation for porcelain crowns and bridges.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Lifetime Osseointegration</li>
+                <li><i class="fa-solid fa-circle-check"></i> 99.2% Clinical Success Rate</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Laser Dentistry -->
+        <div class="treatment-card-wrapper" data-category="gum-laser">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/laser_dentistry.jpg" alt="Laser Dentistry">
+              <span class="card-tag-badge accent-teal"><i class="fa-solid fa-bolt"></i> 100% Painless LASER</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Laser Dentistry</h3>
+              </div>
+              <p>Cutting-edge dental laser technology used for soft-tissue reshaping, sterilization of root canals, and bloodless gum therapies.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Bloodless Precision</li>
+                <li><i class="fa-solid fa-circle-check"></i> Zero Noise Comfort</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 3,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Root Canal Therapy -->
+        <div class="treatment-card-wrapper" data-category="restorative">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/root_canal_implant.jpg" alt="Root Canal Therapy">
+              <span class="card-tag-badge accent-amber"><i class="fa-solid fa-syringe"></i> Pain-Relief RCT</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-syringe"></i></div>
+                <h3>Root Canal Therapy</h3>
+              </div>
+              <p>Painless endodontic therapy removes deep tooth pulp infections, preserves your natural tooth, and seals canals against reinfection.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Saves Natural Teeth</li>
+                <li><i class="fa-solid fa-circle-check"></i> Rotary Endo Equipment</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 3,500 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Wisdom Tooth Extraction -->
+        <div class="treatment-card-wrapper" data-category="surgical">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/wisdom_tooth.jpg" alt="Wisdom Tooth Extraction">
+              <span class="card-tag-badge accent-pink"><i class="fa-solid fa-circle-minus"></i> Impacted Tooth Care</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-circle-minus"></i></div>
+                <h3>Wisdom Tooth Extraction</h3>
+              </div>
+              <p>Expert removal of impacted or misaligned third molars to eliminate jaw pain, prevent crowding, and safeguard oral health.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Specialist Oral Surgeon</li>
+                <li><i class="fa-solid fa-circle-check"></i> Low-Swell Recovery</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 4,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Fixed Partial Denture (Bridge) -->
+        <div class="treatment-card-wrapper" data-category="restorative">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/dental_bridge.jpg" alt="Fixed Partial Denture Bridge">
+              <span class="card-tag-badge accent-blue"><i class="fa-solid fa-link"></i> Ceramic Bridges</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-link"></i></div>
+                <h3>Fixed Partial Denture (Bridge)</h3>
+              </div>
+              <p>Sturdy porcelain-fused-to-metal or ceramic dental bridges anchor seamlessly onto neighboring teeth to replace missing gaps.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Zirconia & Ceramic Options</li>
+                <li><i class="fa-solid fa-circle-check"></i> Restores Full Chewing Power</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 4,500 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Teeth Whitening (Bleaching) -->
+        <div class="treatment-card-wrapper" data-category="cosmetic">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/teeth_whitening.jpg" alt="Teeth Whitening Bleaching">
+              <span class="card-tag-badge accent-teal"><i class="fa-solid fa-sparkles"></i> Smile Brightening</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-sparkles"></i></div>
+                <h3>Teeth Whitening (Bleaching)</h3>
+              </div>
+              <p>Professional enamel-safe bleaching systems that remove stubborn coffee, tea, and tobacco stains to lighten teeth by up to 8 shades.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Up to 8 Shades Brighter</li>
+                <li><i class="fa-solid fa-circle-check"></i> Enamel-Safe Formula</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 6,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Veneers -->
+        <div class="treatment-card-wrapper" data-category="cosmetic">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/dental_veneers.jpg" alt="Dental Veneers">
+              <span class="card-tag-badge accent-purple"><i class="fa-solid fa-gem"></i> Hollywood Smile Design</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-gem"></i></div>
+                <h3>Dental Veneers</h3>
+              </div>
+              <p>Ultra-thin porcelain ceramic shells bonded to front teeth surfaces to transform chipped, discolored, or unevenly spaced teeth.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Custom Stain-Resistant Porcelain</li>
+                <li><i class="fa-solid fa-circle-check"></i> Flawless Natural Aesthetic</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 8,500 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Pediatric Dentistry -->
+        <div class="treatment-card-wrapper" data-category="pediatric">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/pediatric_dentistry.jpg" alt="Pediatric Dentistry Kids Care">
+              <span class="card-tag-badge accent-green"><i class="fa-solid fa-child"></i> Kids Friendly Care</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-child"></i></div>
+                <h3>Pediatric Dentistry</h3>
+              </div>
+              <p>Specialized, gentle dental care for infants, children, and teens including fluoride treatments, sealants, and cavity prevention.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Kid-Friendly Dentists</li>
+                <li><i class="fa-solid fa-circle-check"></i> Protective Pit & Fissure Sealants</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 900 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Flap Surgery -->
+        <div class="treatment-card-wrapper" data-category="gum-laser">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/flap_surgery.jpg" alt="Flap Surgery Gum Care">
+              <span class="card-tag-badge accent-pink"><i class="fa-solid fa-hand-holding-medical"></i> Advanced Gum Surgery</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-hand-holding-medical"></i></div>
+                <h3>Flap Surgery</h3>
+              </div>
+              <p>Specialized periodontal surgery to lift gum tissue, clean deep bacteria pockets around roots, and halt severe gum recession.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Halts Bone Loss & Recession</li>
+                <li><i class="fa-solid fa-circle-check"></i> LASER Sterilized Pockets</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 6,500 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Orthodontic Braces -->
+        <div class="treatment-card-wrapper" data-category="orthodontics">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/orthodontic_braces.jpg" alt="Orthodontic Braces">
+              <span class="card-tag-badge accent-blue"><i class="fa-solid fa-grip-lines"></i> Alignment Braces</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-grip-lines"></i></div>
+                <h3>Orthodontic Braces</h3>
+              </div>
+              <p>High-precision metal, ceramic, or self-ligating braces designed to correct severe bite misalignments and crowded teeth.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Metal & Ceramic Options</li>
+                <li><i class="fa-solid fa-circle-check"></i> Expert Orthodontist Supervision</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 25,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Clear Aligners -->
+        <div class="treatment-card-wrapper" data-category="orthodontics">
+          <div class="glass-card feature-card-rich treatment-card">
+            <div class="card-img-wrapper">
+              <img src="./assets/images/clear_aligners.jpg" alt="Clear Aligners Invisible Braces">
+              <span class="card-tag-badge accent-purple"><i class="fa-solid fa-eye-slash"></i> Invisible Aligners</span>
+            </div>
+            <div class="card-content-body">
+              <div class="treatment-header">
+                <div class="treatment-icon-wrapper"><i class="fa-solid fa-eye-slash"></i></div>
+                <h3>Clear Aligners</h3>
+              </div>
+              <p>Discreet, removable transparent aligners custom-modeled in 3D to align your teeth comfortably without wires or metal brackets.</p>
+              <ul class="card-mini-specs">
+                <li><i class="fa-solid fa-circle-check"></i> Nearly Invisible & Removable</li>
+                <li><i class="fa-solid fa-circle-check"></i> 3D Digital Smile Simulation</li>
+              </ul>
+              <div class="treatment-price-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.85rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; border: 1px dashed rgba(16, 185, 129, 0.25);">
+                <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 600;">Estimated Cost:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 0.9rem;"><i class="fa-solid fa-indian-rupee-sign"></i> 45,000 onwards</span>
+              </div>
+              <button class="btn btn-primary trigger-appointment" style="width: 100%; margin-top: 1rem;"><i class="fa-solid fa-calendar-check"></i> Book Consultation</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section" style="background: var(--bg-card-hover);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-quote-left"></i> Real Patient Feedback</div>
+        <h2 class="section-title">What Our Patients Say</h2>
+        <p class="section-subtitle">Read how Diamond Smile Dental Clinic has transformed smiles and provided comforting dental care.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="glass-card testimonial-card reveal-on-scroll delay-1">
+          <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">“The doctors are extremely kind and attentive. My braces treatment is progressing really well. 5/5.”</p>
+          </div>
+          <div class="author-info">
+            <h4>Manisha M</h4>
+            <p>Orthodontic Patient</p>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card reveal-on-scroll delay-2">
+          <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">“I got my teeth cleaned and whitened here, and the results were amazing. The staff is so humble and professional. I’ve recommended Diamond Smile Dental Clinic to my entire family.”</p>
+          </div>
+          <div class="author-info">
+            <h4>Mr. Arun Kumar</h4>
+            <p>Cosmetic Dental Patient</p>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card reveal-on-scroll delay-3">
+          <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">“Their attention to detail is outstanding. My daughter needed braces and the entire process from consultation to regular follow ups has been so smooth. Really grateful for their care.”</p>
+          </div>
+          <div class="author-info">
+            <h4>Mrs. Revathi S.</h4>
+            <p>Parent of Pediatric Patient</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinic Facilities / Amenities -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-building-circle-check"></i> Modern Comforts</div>
+        <h2 class="section-title">Clinic Facilities & Amenities</h2>
+        <p class="section-subtitle">We go the extra mile to ensure your visit is seamless, accessible, and comfortable.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-1">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="./assets/images/facility_location.jpg" alt="Convenient Central Location Hosur">
+            <span class="card-tag-badge accent-teal"><i class="fa-solid fa-location-dot"></i> Central Hosur</span>
+          </div>
+          <div class="card-content-body" style="text-align: center; align-items: center;">
+            <div class="feature-icon" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-location-dot"></i></div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Convenient Central Location</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">42 Diamond Heights Blvd, Anthivadi Hub, Hosur</p>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-2">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="./assets/images/facility_parking.jpg" alt="Hassle-Free Parking">
+            <span class="card-tag-badge accent-blue"><i class="fa-solid fa-square-parking"></i> Free Parking</span>
+          </div>
+          <div class="card-content-body" style="text-align: center; align-items: center;">
+            <div class="feature-icon" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-square-parking"></i></div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Hassle-Free Parking</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Dedicated 2/4 wheeler patient parking space</p>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-3">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="./assets/images/facility_hours.jpg" alt="Daily Service Hours">
+            <span class="card-tag-badge accent-amber"><i class="fa-solid fa-clock"></i> Open 7 Days</span>
+          </div>
+          <div class="card-content-body" style="text-align: center; align-items: center;">
+            <div class="feature-icon" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-clock"></i></div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Daily Service (9 AM - 9 PM)</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Open Monday to Sunday for your convenience</p>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-4">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="./assets/images/facility_support.jpg" alt="Pickup & Drop-off Support">
+            <span class="card-tag-badge accent-purple"><i class="fa-solid fa-car-side"></i> Transport</span>
+          </div>
+          <div class="card-content-body" style="text-align: center; align-items: center;">
+            <div class="feature-icon" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-car-side"></i></div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Pickup & Drop-off Support</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Senior citizen assistance & transit guidance</p>
+          </div>
+        </div>
+
+        <div class="glass-card feature-card-rich reveal-on-scroll delay-5">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="./assets/images/facility_accessible.jpg" alt="Wheelchair Accessible Facility">
+            <span class="card-tag-badge accent-pink"><i class="fa-solid fa-wheelchair"></i> Accessible</span>
+          </div>
+          <div class="card-content-body" style="text-align: center; align-items: center;">
+            <div class="feature-icon" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-wheelchair"></i></div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Wheelchair Accessible</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Ramp entry & spacious ground floor suites</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: FAQS ACCORDION -->
+  <section id="faqs" class="section" style="background: var(--bg-card-hover);">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fa-solid fa-lightbulb"></i> Knowledge Base</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Clear, expert answers to common dental questions.</p>
+      </div>
+
+      <div class="search-box" style="max-width: 600px; margin: 0 auto 3rem auto;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="faqSearch" placeholder="Type a keyword to filter questions (e.g. Scaling, Braces, RCT)...">
+      </div>
+
+      <div class="faqs-container">
+
+        <!-- 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can medication completely relieve tooth pain?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Not entirely. While medications may offer short-term relief, long-lasting relief requires identifying and treating the root cause of the pain through professional dental care.</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does teeth scaling cause enamel damage, sensitivity, or gaps between teeth?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>No. Scaling safely removes plaque and tartar from teeth and below the gum line. It doesn’t damage enamel or create gaps. Some temporary sensitivity may occur, but it usually subsides as gums heal and reattach to the teeth.</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can fluorosis stains be removed through scaling?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Scaling can remove surface (extrinsic) stains but not fluorosis, which is an internal (intrinsic) stain. Fluorosis may require treatments like bleaching, veneers, or crowns for cosmetic improvement.</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can painful teeth be treated with fillings?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Not always. If the cavity has reached the pulp, the innermost layer of the tooth, simple filling won’t help. In such cases, root canal treatment or tooth extraction might be necessary. Fillings are effective only when the damage is limited to the outer layers (enamel and dentin).</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is placing a cap or crown necessary after root canal treatment (RCT)?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. A crown is recommended after RCT to protect the treated tooth, which may be weaker due to decay. It prevents fractures and adds durability, especially during chewing.</p>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can milk teeth need root canal treatment (RCT)?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. If a milk tooth has a deep cavity and is likely to remain in the mouth for some time, an RCT can preserve it and prevent infection or early loss.</p>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How can I maintain good oral hygiene?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Brush your teeth twice daily with proper technique, rinse after meals, floss regularly, and schedule routine check-ups with your dentist to maintain healthy teeth and gums.</p>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the best age to get braces?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Braces are most effective between ages 12 and 14, when the jaw and teeth are still developing. However, some cases may benefit from earlier intervention depending on the condition.</p>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do all wisdom teeth need to be removed?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>No. Wisdom teeth only require removal if they are impacted, infected, or causing pain due to crowding or damage to adjacent teeth.</p>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is it important to replace missing teeth after extraction?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Replacing extracted teeth helps maintain proper bite alignment and prevents adjacent teeth from shifting, which can affect chewing and overall oral function.</p>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What are the benefits of dental implants?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Dental implants restore both the appearance and functionality of missing teeth. They provide a stable, natural-looking solution that can improve confidence and overall quality of life.</p>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which type of toothbrush and toothpaste should I use?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Use a soft or medium-bristled toothbrush with a small head for better reach. Choose a non-abrasive fluoride toothpaste and replace your toothbrush every three months for optimal hygiene.</p>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What causes tooth sensitivity?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Tooth sensitivity can result from enamel wear (due to attrition or abrasion), tooth decay, exposed tooth roots, or hairline cracks in the teeth.</p>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How often should I see a dentist?</span>
+            <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="faq-answer">
+            <p>Visiting your dentist every six months is recommended for routine check-ups, professional cleaning, and preventive care to maintain good oral health.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CONTACT US -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-comments"></i> Get in Touch</div>
+        <h2 class="section-title">Contact Diamond Smile Dental Clinic</h2>
+        <p class="section-subtitle">We are here to answer your questions and assist with your dental appointments.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="glass-card contact-form-card reveal-on-scroll delay-1">
+          <div class="badge"><i class="fa-solid fa-envelope-open-text"></i> Send Us A Message</div>
+          <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">We would love to hear from you</h2>
+
+          <form id="clinicContactForm">
+            <div class="form-group">
+              <label for="contactName">Name *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Email *</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="example@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPhone">Phone Number *</label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="Enter your mobile number" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Your Message (Optional)</label>
+              <textarea id="contactMessage" class="form-control" placeholder="How can our dental team assist you today?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem; padding: 0.85rem;">
+              <i class="fa-solid fa-paper-plane"></i> Submit
+            </button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="glass-card contact-info-card reveal-on-scroll delay-2">
+          <div class="badge"><i class="fa-solid fa-map-location-dot"></i> Clinic Info</div>
+          <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Reach us</h2>
+
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="info-content">
+                <h4>Clinic Address</h4>
+                <p><strong>Main:</strong> 42 Diamond Heights Boulevard, Anthivadi Hub, Hosur, TN 635109</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"><strong>Alt Branch:</strong> Suite 204, Diamond Medical Plaza, Central Avenue, Hosur</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="info-content">
+                <h4>Email Address</h4>
+                <p><a href="mailto:info@diamondsmileclinic.in">info@diamondsmileclinic.in</a></p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"><strong>Alt / Care:</strong> <a href="mailto:care@diamondsmileclinic.in">care@diamondsmileclinic.in</a></p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="info-content">
+                <h4>Phone & WhatsApp</h4>
+                <p><a href="tel:+919845082190">+91 98450 82190</a> / <a href="tel:+919448034820">+91 94480 34820</a></p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"><strong>24/7 Alt & Emergency:</strong> <a href="tel:+919845082199">+91 98450 82199</a></p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+              <div class="info-content">
+                <h4>Clinic Timings</h4>
+                <p><strong>Mon – Sat:</strong> 8:30 AM to 7:30 PM</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"><strong>Sunday (Alt):</strong> 9:00 AM to 1:00 PM (Emergency 24/7)</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color); height: 220px;">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15569.215894172535!2d77.828!3d12.735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae713f02bdf555%3A0x6b7b6290bd04e9c1!2sHosur%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: PRIVACY POLICY -->
+  <section id="privacy" class="section" style="background: var(--bg-card-hover);">
+    <div class="container">
+      <div class="glass-card policy-card policy-content reveal-on-scroll">
+        <div class="badge"><i class="fa-solid fa-shield-halved"></i> Data Protection</div>
+        <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main);">Privacy Policy</h2>
+        <p>At Diamond Smile Dental Clinic, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, store, and disclose information from visitors and users of our website.</p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect personal identification information from users in several ways, including when users visit our website, fill out forms, or engage with features.</p>
+        <p><strong>Types of information we may collect include:</strong> Name, Email address, Phone number.</p>
+
+        <h2>Cookies & Technical Data</h2>
+        <p>Our website may use “cookies” to enhance the user experience. We may also gather non-personal identification info like browser type, device details, OS, and ISP.</p>
+
+        <h2>How We Use Your Information</h2>
+        <p>To operate and manage the website, improve customer service, enhance website experience, and communicate regarding appointments.</p>
+
+        <h2>Data Security & Children's Privacy</h2>
+        <p>We implement security measures for data protection. In compliance with COPPA, we do not knowingly collect personal info from children under 13.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us at <strong>info@diamondsmileclinic.in</strong> or call <strong>+91 98450 82190 / +91 94480 34820 (Alt: +91 98450 82199)</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Appointment Modal -->
+  <div class="modal-overlay" id="appointmentModal">
+    <div class="modal-card">
+      <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div class="badge"><i class="fa-solid fa-calendar-check"></i> Diamond Smile Dental Clinic</div>
+        <h2 style="font-size: 1.8rem;">Fix an Appointment</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Select your preferred date & time. We will get in touch to confirm!</p>
+      </div>
+
+      <form id="appointmentForm">
+        <div class="form-group">
+          <label for="aptName">Full Name *</label>
+          <input type="text" id="aptName" class="form-control" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="aptPhone">Phone Number *</label>
+          <input type="tel" id="aptPhone" class="form-control" placeholder="Enter your 10-digit mobile number" required>
+        </div>
+
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label for="aptDate">Preferred Date *</label>
+            <input type="date" id="aptDate" class="form-control" required>
+          </div>
+          <div>
+            <label for="aptDoctor">Doctor Preference</label>
+            <select id="aptDoctor" class="form-control">
+              <option value="Dr. Anupriya">Dr. Anupriya (Founder)</option>
+              <option value="Dr. Ananya Iyer">Dr. Ananya Iyer</option>
+              <option value="Dr. Meera Subramanian">Dr. Meera Subramanian</option>
+              <option value="Dr. Arvind Kumar">Dr. Arvind Kumar</option>
+              <option value="Dr. Sneha N">Dr. Sneha N</option>
+              <option value="Dr. Srinivas Rohit">Dr. Srinivas Rohit</option>
+              <option value="Dr. Balu">Dr. Balu (Laser Specialist)</option>
+              <option value="Dr. Vikram Raj">Dr. Vikram Raj Kishore</option>
+              <option value="Dr. Ajay Jumar">Dr. Ajay Jumar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="aptService">Service / Treatment Required</label>
+          <select id="aptService" class="form-control">
+            <option value="General Consultation">General Consultation</option>
+            <option value="Teeth Cleaning">Teeth Cleaning & Scaling</option>
+            <option value="Orthodontic Braces">Braces & Aligners</option>
+            <option value="Tooth Extraction">Tooth Extraction</option>
+            <option value="Dental Implants">Dental Implants</option>
+            <option value="Laser Care">Laser Dentistry</option>
+            <option value="Pediatric Care">Pediatric Care</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Appointment Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand reveal-on-scroll">
+          <a href="#home" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+            <div class="logo-text">Diamond <span>Smile</span></div>
+          </a>
+          <p>Diamond Smile Dental Clinic is the region's premier dental clinic, specializing in warm, modern, compassionate care for women, children, and families.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column reveal-on-scroll delay-1">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#treatments">Treatments</a>
+            <a href="#faqs">FAQs</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#privacy">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-column reveal-on-scroll delay-2">
+          <h4>Key Treatments</h4>
+          <div class="footer-links">
+            <a href="#treatments">Teeth Cleaning & Scaling</a>
+            <a href="#treatments">Orthodontic Braces & Aligners</a>
+            <a href="#treatments">Dental Implants</a>
+            <a href="#treatments">Tooth Extraction</a>
+            <a href="#treatments">Laser Dentistry</a>
+            <a href="#treatments">Pediatric Dentistry</a>
+          </div>
+        </div>
+
+        <div class="footer-column reveal-on-scroll delay-3">
+          <h4>Contact Details</h4>
+          <div class="footer-links" style="gap: 0.75rem;">
+            <p><i class="fa-solid fa-location-dot" style="color: var(--primary); margin-right: 8px;"></i> 42 Diamond Heights Blvd, Anthivadi, Hosur 635109</p>
+            <p><i class="fa-solid fa-phone" style="color: var(--primary); margin-right: 8px;"></i> +91 98450 82190 / +91 94480 34820</p>
+            <p><i class="fa-solid fa-mobile-screen" style="color: var(--primary); margin-right: 8px;"></i> Alt / Emergency: +91 98450 82199</p>
+            <p><i class="fa-solid fa-envelope" style="color: var(--primary); margin-right: 8px;"></i> info@diamondsmileclinic.in</p>
+            <p><i class="fa-solid fa-clock" style="color: var(--primary); margin-right: 8px;"></i> Mon - Sat: 8:30 AM - 7:30 PM (Sun: 9AM - 1PM)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Diamond Smile Dental Clinic. All Rights Reserved. Designed for ShadowFox Client Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth Modal (Sign In / Sign Up Split Screen) -->
+  <div class="modal-overlay" id="authModal">
+    <div class="auth-modal-card">
+      <button class="close-modal-btn close-auth-modal-btn" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="auth-card-body">
+        <!-- Form Side -->
+        <div class="auth-form-side">
+          <!-- Auth Mode Tabs (Sign In / Sign Up) -->
+          <div class="auth-mode-switch">
+            <button type="button" class="auth-mode-btn active" id="tabBtnSignIn" data-tab="signin">Sign In</button>
+            <button type="button" class="auth-mode-btn" id="tabBtnSignUp" data-tab="signup">Sign Up</button>
+          </div>
+
+          <!-- SIGN IN FORM -->
+          <form id="signInForm" class="auth-form-content active">
+            <div class="form-group">
+              <label for="signInEmail">Email or Phone</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="text" id="signInEmail" class="form-control with-icon" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signInPassword">Password</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="signInPassword" class="form-control with-icon with-eye" placeholder="Enter your password" required>
+                <button type="button" class="toggle-password-btn" aria-label="Toggle Password Visibility">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="checkbox-container">
+                <input type="checkbox" id="rememberMe" checked>
+                <span class="checkmark"></span>
+                Remember me
+              </label>
+              <a href="#" class="forgot-link" id="forgotPasswordBtn">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit-btn" id="signInSubmitBtn">
+              Login
+            </button>
+
+            <!-- New User Guidance Card -->
+            <div class="new-user-guidance-card">
+              <div class="guidance-body">
+                <i class="fa-solid fa-sparkles guidance-star-icon"></i>
+                <div>
+                  <strong>First time visiting Diamond Smile?</strong>
+                  <p>New patients can easily create a free account.</p>
+                </div>
+              </div>
+              <button type="button" class="btn-guidance-signup" id="guidanceSignUpBtn">
+                Go to Sign Up <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Quick Demo Logins -->
+            <div class="demo-auth-box">
+              <div class="demo-box-title"><i class="fa-solid fa-lightbulb"></i> Quick Patient Demo:</div>
+              <div class="demo-btn-group">
+                <button type="button" class="demo-chip-btn" id="fillDemoPatient" style="width: 100%;">
+                  <i class="fa-solid fa-user"></i> Auto-fill Patient Demo Login
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-footer-switch">
+              No account yet? <a href="#" id="switchToSignUpLink">Sign Up</a>
+            </div>
+          </form>
+
+          <!-- SIGN UP FORM -->
+          <form id="signUpForm" class="auth-form-content" style="display: none;">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="signUpName" id="signUpNameLabel">Full Name</label>
+                <div class="input-icon-wrapper">
+                  <i class="fa-solid fa-user input-icon"></i>
+                  <input type="text" id="signUpName" class="form-control with-icon" placeholder="Jane Doe" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signUpPhone">Phone Number</label>
+                <div class="input-icon-wrapper">
+                  <i class="fa-solid fa-phone input-icon"></i>
+                  <input type="tel" id="signUpPhone" class="form-control with-icon" placeholder="+91 98765 43210" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signUpEmail">Email Address</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="signUpEmail" class="form-control with-icon" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signUpPassword">Password</label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="signUpPassword" class="form-control with-icon with-eye" placeholder="Create a strong password" required>
+                <button type="button" class="toggle-password-btn" aria-label="Toggle Password Visibility">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success-auth auth-submit-btn" id="signUpSubmitBtn">
+              Create Patient Account
+            </button>
+
+            <div class="auth-footer-switch">
+              Already have an account? <a href="#" id="switchToSignInLink">Sign In</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Visual Side -->
+        <div class="auth-visual-side">
+          <img src="./assets/images/auth_banner.jpg" id="authVisualImg" class="auth-visual-img" alt="Diamond Smile Dental Clinic Showcase">
+          <div class="auth-visual-overlay">
+            <div class="auth-visual-header">
+              <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+                <div class="logo-text">Diamond <span>Smile</span></div>
+              </div>
+            </div>
+
+            <div class="auth-visual-content">
+              <div class="auth-network-pill" id="authNetworkPill">DIAMOND SMILE HEALTHCARE NETWORK</div>
+              <h2 id="authVisualTitle">Painless Dental Care. Lifelong Healthy Smiles.</h2>
+              <p id="authVisualSubtitle">Join Diamond Smile's premier dental clinic. Access digital consultation history, doctor scheduling & treatment records instantly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Patient Profile & Medical History Modal -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="profile-modal-card">
+      <button class="close-modal-btn close-profile-modal-btn" id="closeProfileModalBtn" aria-label="Close Profile Modal"><i class="fa-solid fa-xmark"></i></button>
+
+      <!-- Profile Header Banner -->
+      <div class="profile-header-banner">
+        <div class="profile-avatar-large" id="modalProfileAvatar">JD</div>
+        <div class="profile-banner-info">
+          <h2 id="modalProfileName">Jane Doe</h2>
+          <div class="profile-meta-tags">
+            <span class="meta-tag"><i class="fa-solid fa-id-badge"></i> ID: <strong id="modalProfilePatientId">SP-2026-8891</strong></span>
+            <span class="meta-tag"><i class="fa-solid fa-calendar-days"></i> Joined: <strong id="modalProfileMemberSince">August 2026</strong></span>
+            <span class="meta-tag badge-patient"><i class="fa-solid fa-user-heart"></i> Verified Patient</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Navigation Tabs -->
+      <div class="profile-nav-tabs">
+        <button type="button" class="profile-tab-btn active" id="profTabBtnPersonal" data-profile-tab="personal"><i class="fa-solid fa-user"></i> Personal Details</button>
+        <button type="button" class="profile-tab-btn" id="profTabBtnMedical" data-profile-tab="medical"><i class="fa-solid fa-notes-medical"></i> Medical History</button>
+        <button type="button" class="profile-tab-btn" id="profTabBtnReports" data-profile-tab="reports"><i class="fa-solid fa-file-invoice-dollar"></i> Reports & X-Rays</button>
+      </div>
+
+      <div class="profile-modal-body">
+        <!-- 1. PERSONAL DETAILS TAB -->
+        <div class="profile-tab-content active" id="tabPersonal">
+          <form id="profilePersonalForm">
+            <div class="profile-grid-2col">
+              <div class="form-group">
+                <label><i class="fa-solid fa-user"></i> Full Name</label>
+                <input type="text" id="profName" class="form-control" placeholder="Full Name" required>
+              </div>
+              <div class="form-group">
+                <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                <input type="email" id="profEmail" class="form-control" placeholder="Email" readonly style="opacity: 0.85; cursor: not-allowed; background: rgba(255,255,255,0.05);">
+              </div>
+              <div class="form-group">
+                <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                <input type="tel" id="profPhone" class="form-control" placeholder="+91 98765 43210">
+              </div>
+              <div class="form-group">
+                <label><i class="fa-solid fa-venus-mars"></i> Gender</label>
+                <select id="profGender" class="form-control">
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other / Prefer not to say</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label><i class="fa-solid fa-cake-candles"></i> Age / Date of Birth</label>
+                <input type="text" id="profDob" class="form-control" placeholder="28 Years (15 May 1998)">
+              </div>
+              <div class="form-group">
+                <label><i class="fa-solid fa-droplet"></i> Blood Group</label>
+                <select id="profBloodGroup" class="form-control">
+                  <option value="O+">O +ve</option>
+                  <option value="O-">O -ve</option>
+                  <option value="A+">A +ve</option>
+                  <option value="A-">A -ve</option>
+                  <option value="B+">B +ve</option>
+                  <option value="B-">B -ve</option>
+                  <option value="AB+">AB +ve</option>
+                  <option value="AB-">AB -ve</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+              <label><i class="fa-solid fa-location-dot"></i> Emergency Contact & Address</label>
+              <input type="text" id="profAddress" class="form-control" placeholder="42 Diamond Heights Blvd, Hosur (Emergency: +91 98450 82199)">
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 1.25rem; width: 100%;"><i class="fa-solid fa-floppy-disk"></i> Save Profile Details</button>
+          </form>
+        </div>
+
+        <!-- 2. MEDICAL HISTORY TAB -->
+        <div class="profile-tab-content" id="tabMedical" style="display: none;">
+          <div class="medical-history-box">
+            <div class="med-section-card">
+              <h4><i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> Known Allergies</h4>
+              <p id="profAllergies">No known drug allergies reported. Penicillin skin test negative.</p>
+            </div>
+            <div class="med-section-card">
+              <h4><i class="fa-solid fa-heart-pulse" style="color: #3b82f6;"></i> Chronic Health Conditions</h4>
+              <div class="med-chips">
+                <span class="med-chip"><i class="fa-solid fa-check"></i> BP Normal</span>
+                <span class="med-chip"><i class="fa-solid fa-check"></i> Non-Diabetic</span>
+                <span class="med-chip"><i class="fa-solid fa-check"></i> No Bleeding Disorders</span>
+              </div>
+            </div>
+            <div class="med-section-card">
+              <h4><i class="fa-solid fa-tooth" style="color: #10b981;"></i> Recorded Dental History</h4>
+              <ul class="past-treatment-list">
+                <li><i class="fa-solid fa-circle-check"></i> LASER Teeth Cleaning & Scaling (March 2026)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Composite Tooth Filling - Upper Molar (Nov 2025)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. REPORTS & X-RAYS TAB -->
+        <div class="profile-tab-content" id="tabReports" style="display: none;">
+          <div class="reports-grid">
+            <div class="report-item-card">
+              <div class="report-icon"><i class="fa-solid fa-x-ray"></i></div>
+              <div class="report-info">
+                <strong>Full Mouth OPG Digital X-Ray</strong>
+                <span>Scanned on Aug 2026 • Dr. R. Sakthi</span>
+              </div>
+              <span class="report-badge">PDF / DICOM</span>
+            </div>
+            <div class="report-item-card">
+              <div class="report-icon"><i class="fa-solid fa-file-prescription"></i></div>
+              <div class="report-info">
+                <strong>Post-scaling Care Plan & Prescription</strong>
+                <span>Issued Aug 2026 • Diamond Smile Dental Clinic</span>
+              </div>
+              <span class="report-badge">Verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connected JavaScript -->
+  <script src="script.js" defer></script>
+</body>
+</html>
